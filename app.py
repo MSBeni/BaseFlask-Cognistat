@@ -25,7 +25,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'msbeni'
 
 # Local Secret Key
-app.secret_key = json.loads(open('authAPP.json', 'r').read())['auth']['api_secret']
+# app.secret_key = json.loads(open('authAPP.json', 'r').read())['auth']['api_secret']
 api = Api(app)
 
 jwd = JWT(app, auth_, identity)
