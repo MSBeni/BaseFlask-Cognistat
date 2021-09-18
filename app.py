@@ -6,7 +6,7 @@ from security import auth_, identity
 from resource.items import Item, AddItem, AllItems
 from resource.user import CrUser
 from resource.stores import StoreRes, StoreList, StoreName
-from create_drop_tables import Tables
+# from create_drop_tables import Tables
 from db import db
 
 
