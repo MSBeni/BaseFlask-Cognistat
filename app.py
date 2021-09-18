@@ -11,11 +11,18 @@ from db import db
 
 
 app = Flask(__name__)
-password_db = json.loads(open('../../../secretfiles.json', 'r').read())['web']['user_pw']
-app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc://sa:" + password_db + "@localhost:1433/testDB?driver=ODBC+Driver+17+for+SQL+Server"
+
+# Server pass - local or Cloud
+password_db = json.loads(open('secretfiles.json', 'r').read())['web']['user_pw']
+
+# SQL Server Config - Local
+# app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc://sa:" + password_db + "@localhost:1433/testDB?driver=ODBC+Driver+17+for+SQL+Server"
+
+# SQLite Config - Heroku
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = json.loads(open('../../../authAPP.json', 'r').read())['auth']['api_secret']
+app.secret_key = json.loads(open('authAPP.json', 'r').read())['auth']['api_secret']
 api = Api(app)
 
 jwd = JWT(app, auth_, identity)
