@@ -1,4 +1,4 @@
-# Working with SqlAlchemy
+# Working with SqlAlchemy and Deploying on Heroku
 
 ## Installation
 Please install the necessary libraries as before:
