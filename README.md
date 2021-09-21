@@ -44,3 +44,8 @@ testDB
 
 (5 rows affected)
 ```
+
+# Heroku Deployment
+For deploying the project on heroku you need to create these files with these goals:
+
+* **runtime.txt** file: To tell heroku what python version we are using 
