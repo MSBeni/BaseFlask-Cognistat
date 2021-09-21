@@ -52,3 +52,14 @@ For deploying the project on heroku you need to create these files with these go
 * **requirements.txt** file: Telling heroku what libraries we are using in this project nad how to install them.
     - Note: The uwsgi library added for this project is responsible for multi-process support, restarting processes 
       if they hang up and so on. It is not needed to be installed locally (need a c compiler). 
+* **uwsgi.ini** file: Contains some configuration parameters for uwsgi processes to run our app.
+    - [uwsgi] is the section tag and then we should define the port. 
+      
+    - The heroku has its own port this part "http-socket = :$(PORT)" can run the port from heroku configuration.
+      
+    - The "master = true" is going to tell heroku about master process when running wsgi and controlling slave 
+      processes. 
+      
+    - "die-on-term = true" kill an uwsgi process  when it is terminated to free up resources. 
+      
+    - "module = run:app" shows the module we are running which is inside run.py in the variable called app
