@@ -48,4 +48,5 @@ testDB
 # Heroku Deployment
 For deploying the project on heroku you need to create these files with these goals:
 
-* **runtime.txt** file: To tell heroku what python version we are using 
+* **runtime.txt** file: To tell heroku what language (python) and what version you are using 
+* ****
