@@ -50,3 +50,5 @@ For deploying the project on heroku you need to create these files with these go
 
 * **runtime.txt** file: To tell heroku what language (python) and what version you are using 
 * **requirements.txt** file: Telling heroku what libraries we are using in this project nad how to install them.
+    - Note: The uwsgi library added for this project is responsible for multi-process support, restarting processes 
+      if they hang up and so on. It is not needed to be installed locally (need a c compiler). 
