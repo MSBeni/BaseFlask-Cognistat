@@ -1,4 +1,5 @@
 import os
+import re
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -20,7 +21,18 @@ app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc://sa:" + password_db + "@localhost:1433/testDB?driver=ODBC+Driver+17+for+SQL+Server"
 
 # SQLite Config - Heroku
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+
+# Postgres Config - Heroku
+uri = os.getenv("DATABASE_URL")  # or other relevant config var
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+
+# rest of connection code using the connection string `uri`
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
+
+
+
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
