@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -19,7 +20,7 @@ app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc://sa:" + password_db + "@localhost:1433/testDB?driver=ODBC+Driver+17+for+SQL+Server"
 
 # SQLite Config - Heroku
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
