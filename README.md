@@ -62,4 +62,7 @@ For deploying the project on heroku you need to create these files with these go
       
     - "die-on-term = true" kill an uwsgi process  when it is terminated to free up resources. 
       
-    - "module = run:app" shows the module we are running which is inside run.py in the variable called app
+    - "module = run:app" shows the module we are running which is inside run.py in the variable called app.
+    
+* **Procfile** file: Explain what dyno we are going to use in Heroku which run the uwsgi process and when we deploy
+the python app will be handled and listen to python app and start flask app.
