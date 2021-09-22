@@ -67,4 +67,31 @@ For deploying the project on heroku you need to create these files with these go
 * **Procfile** file: Explain what dyno we are going to use in Heroku which run the uwsgi process and when we deploy
 the python app will be handled and listen to python app and start flask app.
   
-# Other Cloud-based Service Providers
+# Other Cloud-based Service Providers:
+
+
+```editorconfig
+server{
+listen 80;
+real_ip_header X-Forwarded-For;
+set_real_ip_from 127.0.0.1;
+server_name localhost;
+
+location / {
+include uwsgi_params;
+uwsgi_pass unix:/var/www/html/items-rest/socket.sock;
+uwsgi_modifier1 30;
+}
+
+error_page 404 /404.html;
+location = /404.html{
+root /usr/share/nginx/html;
+}
+
+error_page 500 502 503 504 /50x.html
+location = /50x.html {
+root /usr/share/nginx/html;
+}
+}
+```
+
