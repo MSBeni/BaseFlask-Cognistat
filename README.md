@@ -66,3 +66,5 @@ For deploying the project on heroku you need to create these files with these go
     
 * **Procfile** file: Explain what dyno we are going to use in Heroku which run the uwsgi process and when we deploy
 the python app will be handled and listen to python app and start flask app.
+  
+# Other Cloud-based Service Providers
