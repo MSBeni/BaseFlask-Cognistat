@@ -95,3 +95,20 @@ root /usr/share/nginx/html;
 }
 ```
 
+- Ubuntu service creation:
+```editorconfig
+[Unit]
+Description=uWSGI items rest
+
+[Service]
+Environemnt=DATABASE_URL=postgres://jose:1234@localhost:5432/msbeni
+ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid msbeni --gid msbeni --logto /var/www/html/items-rest/log/emperor.l
+og
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
+'''
