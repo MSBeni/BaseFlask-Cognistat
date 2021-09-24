@@ -139,3 +139,27 @@ callable = app
 logto = /var/www/html/items-rest/log/%n.log
 
 ```
+
+
+__________________________________________________________________________
+[uwsgi]
+base = /var/www/html/items-rest
+app = run
+module = %(app)
+
+home = %(base)/venv
+pythonpath = %(base)
+
+socket = %(base)/socket.sock
+
+chmod-socket = 777
+
+processes = 8
+
+threads = 8
+
+harakiri = 15
+
+callable = app
+
+logto = /var/www/html/items-rest/log/%n.log

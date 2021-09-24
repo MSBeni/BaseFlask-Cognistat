@@ -35,6 +35,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = uri
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['PROPAGATE_EXCEPTIONS'] = True
 
 # Test on Heroku
 app.secret_key = 'msbeni'
